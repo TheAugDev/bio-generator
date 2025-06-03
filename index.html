@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Department Bio Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <svg class="mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <h1>City Department Bio Generator</h1>
+            <p>Create a welcoming bio for new members of any city department.</p>
+        </div>
+
+        <div id="alertMessage" class="alert hidden"></div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="form-group">
+                <label for="recruitName">Member's Full Name:</label>
+                <input type="text" id="recruitName" placeholder="e.g., Thomas Fraticelli">
+            </div>
+            <div class="form-group">
+                <label for="recruitTitle">Member's Title:</label>
+                <input type="text" id="recruitTitle" placeholder="e.g., Police Officer, Park Ranger" value="Police Officer">
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="form-group">
+                <label for="recruitPhoto">Member's Photo:</label>
+                <input type="file" id="recruitPhoto" accept="image/*">
+                <img id="recruitPhotoPreview" src="#" alt="Photo Preview" class="hidden preview-img"/>
+            </div>
+            <div class="form-group">
+                <label for="logoImage">Department Logo (Optional):</label>
+                <input type="file" id="logoImage" accept="image/png, image/svg">
+                <img id="logoImagePreview" src="#" alt="Logo Preview" class="hidden preview-img"/>
+            </div>
+        </div>
+         <div class="form-group">
+            <label for="aiBgImage">AI Background Image (Optional):</label>
+            <input type="file" id="aiBgImage" accept="image/*">
+            <img id="aiBgImagePreview" src="#" alt="AI Background Preview" class="hidden preview-img"/>
+            <p class="mt-1 text-xs text-gray-500">Upload a pre-generated AI background, or leave empty to use the default gradient.</p>
+        </div>
+        
+        <div class="form-group">
+            <label for="bioText">Bio Content:</label>
+            <textarea id="bioText" rows="6" placeholder="Enter bio details. Example: My name is Thomas Fraticelli, I prefer to go by Frat..."></textarea>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="form-group">
+                <label for="displayDate">Display Date:</label>
+                <input type="text" id="displayDate" placeholder="e.g., July 1st, 2024" value="July 1st, 2024">
+            </div>
+             <div class="form-group">
+                <label for="footerText">Footer Text:</label>
+                <input type="text" id="footerText" placeholder="e.g., Denton Police Department" value="Denton Police Department">
+            </div>
+        </div>
+       
+        <button id="generateButton" class="btn btn-primary w-full text-lg">
+            <div id="loadingSpinner" class="spinner hidden"></div>
+            Generate Bio
+        </button>
+
+        <div id="canvasContainer" class="canvas-container mt-6"> <!-- Initially visible or controlled by JS -->
+            <h2 class="text-xl font-semibold text-gray-700 mb-3 text-center">Generated Bio Preview</h2>
+            <canvas id="bioCanvas"></canvas>
+            <button id="downloadButton" class="btn btn-secondary w-full mt-4"> <!-- Initially visible or controlled by JS -->
+                Download Bio Image
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
